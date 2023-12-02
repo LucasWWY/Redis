@@ -64,13 +64,13 @@ public class SecKill_redisByScript {
 
         String reString=String.valueOf(result);
         if ("0".equals( reString )  ) {
-            System.err.println("已抢空！！");
+            System.err.println("已抢空");
         }else if("1".equals( reString )  )  {
-            System.out.println("抢购成功！！！！");
+            System.out.println("抢购成功");
         }else if("2".equals( reString )  )  {
-            System.err.println("该用户已抢过！！");
+            System.err.println("该用户已抢过");
         }else{
-            System.err.println("抢购异常！！");
+            System.err.println("抢购异常");
         }
         jedis.close();
         return true;
