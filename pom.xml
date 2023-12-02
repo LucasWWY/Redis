@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.16</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.example</groupId>
+    <artifactId>Redis</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Redis</name>
+    <description>Redis</description>
+    <properties>
+        <java.version>8</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- spring2.X 集成redis 所需common-pool2-->
+        <!--
+        在使用 Spring Boot 2.7.x 版本时，如果你正在集成 Redis，通常你会使用 Spring Data Redis。Spring Data Redis 依赖于 Lettuce 或 Jedis 作为客户端来连接到 Redis 服务器。
+        这两个客户端都使用了 Apache Commons Pool 2 来管理连接池。对于 Lettuce，它内部使用了 Netty 进行网络通信，并且已经将 Apache Commons Pool 2 作为可选依赖项集成在内。
+        因此，如果你使用的是 Lettuce（这是 Spring Boot 的默认 Redis 客户端），你通常不需要显式地添加 commons-pool2 依赖项，因为它已经被包含在 Spring Boot Starter Data Redis 中。
+        对于 Jedis，如果你选择使用 Jedis 而不是 Lettuce，并且你正在使用连接池，那么你可能需要显式地添加 commons-pool2 依赖项。不过，这也取决于 Spring Boot 的具体版本，因为 Spring Boot Starter 可能已经包含了所需的依赖项。
+        为了确定是否需要显式添加 commons-pool2，建议查看你项目使用的 Spring Boot 版本的官方文档和依赖管理情况。这可以通过查看 Spring Boot Starter Data Redis 的 pom.xml 文件或使用 Maven 或 Gradle 的依赖树分析功能来完成。
+        -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>3.8.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

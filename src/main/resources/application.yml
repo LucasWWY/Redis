@@ -1,0 +1,7 @@
+spring:
+  data:
+    redis:
+      database: 0
+      # redis server ip
+      host: 192.168.140.136
+      port: 6379
